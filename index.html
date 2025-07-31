@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mama's Love Adventure ❤️</title>
+    <title>Happy Girlfriend's Day Mama</title>
 
     <link
       href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap"
@@ -41,6 +41,24 @@
           opacity: 1;
           transform: translateY(0);
         }
+      }
+
+      /* Heart Counter */
+      .heart-counter {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(255, 255, 255, 0.9);
+        color: #ff4f8b;
+        padding: 15px 25px;
+        border-radius: 25px;
+        font-size: 1.3rem;
+        font-weight: 700;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        animation: pulse 2s infinite;
+        border: 3px solid #ff4f8b;
       }
 
       /* Flower Animation */
@@ -240,6 +258,11 @@
           left: 120px;
           transform: rotateZ(-35deg);
         }
+
+        .heart-counter {
+          font-size: 1.1rem;
+          padding: 12px 20px;
+        }
       }
 
       #level3 h2 {
@@ -248,7 +271,7 @@
 
       .placeholder-img {
         position: fixed;
-        
+
         z-index: 50;
         width: 100px; /* Adjust size as needed */
         border-radius: 10px;
@@ -275,6 +298,11 @@
         type="audio/mp3"
       />
     </audio>
+
+    <!-- Heart Counter -->
+    <div id="heartCounter" class="heart-counter" style="display: none">
+      💖 Hearts Left: <span id="heartsLeft">15</span> 💖
+    </div>
 
     <!-- Intro -->
     <!-- Top right placeholder -->
@@ -338,6 +366,7 @@
     <script>
       let currentLevel = 0;
       let foundHearts = 0;
+      const totalHearts = 15;
       const sections = ["intro", "level1", "level2", "level3"];
       const loveNotes = [
         "You're my sunshine ☀️",
@@ -347,19 +376,19 @@
         "Every day I love you more 💖",
         "You are my safe place 🏡",
         "I found my forever in you 💫",
-        "You’re the reason I believe in love 🌹",
+        "You're the reason I believe in love 🌹",
         "In your eyes, I see my whole world 🌎",
         "I fall for you more every single day 💘",
-        "You’re my sweetest dream come true ✨",
-        "When I’m with you, I’m home 🕊️",
+        "You're my sweetest dream come true ✨",
+        "When I'm with you, I'm home 🕊️",
         "Your love is my greatest treasure 💎",
         "You make my soul smile 🌞",
         "I thank God for you every day 🙏",
-        "With you, forever still isn’t enough ⏳",
+        "With you, forever still isn't enough ⏳",
         "You are my miracle in human form 🌼",
-        "Loving you is the best thing I’ve ever done ❤️‍🔥",
+        "Loving you is the best thing I've ever done ❤️‍🔥",
         "You are my heart, my soul, my everything 💖",
-        "If I could choose again, I’d still choose you a million times ♾️",
+        "If I could choose again, I'd still choose you a million times ♾️",
       ];
       const loveLetterText = `💖 My dearest Mama ❤️💋,
 
@@ -373,7 +402,7 @@ You were there when I was down 😔, you lifted me when I felt weak 💪💖,
 and you gave me a reason to smile every single day 😍.  
 
 I want to thank you for every hug 🤗, every word of encouragement 📜,  
-every laugh we’ve shared 😂, and every tear you’ve wiped away 💦.  
+every laugh we've shared 😂, and every tear you've wiped away 💦.  
 You are my partner, my best friend 👩‍❤️‍👨, and the love of my life 💍.  
 
 No matter where life takes us 🌍, I promise to stand by your side 🤝,  
@@ -385,12 +414,35 @@ And I will spend the rest of my life showing you just how much you mean to me �
 Forever and always yours ❤️‍🔥,  
 Shalom, Papi 💌💖💞`;
 
+      function updateHeartCounter() {
+        const heartsLeft = totalHearts - foundHearts;
+        document.getElementById("heartsLeft").textContent = heartsLeft;
+
+        // Add some visual feedback when hearts are found
+        const counter = document.getElementById("heartCounter");
+        counter.style.transform = "translateX(-50%) scale(1.1)";
+        counter.style.background = "rgba(255, 182, 193, 0.95)";
+
+        setTimeout(() => {
+          counter.style.transform = "translateX(-50%) scale(1)";
+          counter.style.background = "rgba(255, 255, 255, 0.9)";
+        }, 200);
+      }
+
       function showSection(index) {
         sections.forEach(
           (id) => (document.getElementById(id).style.display = "none")
         );
         currentLevel = index;
         document.getElementById(sections[currentLevel]).style.display = "block";
+
+        // Show/hide heart counter based on current level
+        const counter = document.getElementById("heartCounter");
+        if (currentLevel === 1) {
+          counter.style.display = "block";
+        } else {
+          counter.style.display = "none";
+        }
       }
 
       document
@@ -415,6 +467,8 @@ Shalom, Papi 💌💖💞`;
 
       function spawnHearts() {
         foundHearts = 0;
+        updateHeartCounter();
+
         function createHeart() {
           const heart = document.createElement("div");
           heart.className = "heart";
@@ -422,6 +476,7 @@ Shalom, Papi 💌💖💞`;
           heart.style.left = Math.random() * 80 + 10 + "vw";
           heart.onclick = () => {
             foundHearts++;
+            updateHeartCounter();
 
             if (foundHearts < 15) {
               // First 14 clicks → show random love note
