@@ -225,12 +225,12 @@
       /* Love Letter */
       .love-letter {
         background: rgba(255, 255, 255, 0.15);
-        padding: 30px;
+        padding: 20px;
         border-radius: 16px;
         max-width: 700px;
         margin: auto;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        font-size: 1.1rem;
+        font-size: 1rem;
         line-height: 1.8;
         white-space: pre-wrap;
       }
@@ -410,7 +410,7 @@
         "You are my heart, my soul, my everything 💖",
         "If I could choose again, I'd still choose you a million times ♾️",
       ];
-      const loveLetterText = `💖 My dearest Mama ❤️💋,
+      const loveLetterText = `Hey Mama ❤️💋,
 
 From the very moment you walked into my life, everything changed 🌅💫.  
 You brought light where there was darkness 🌞, peace where there was chaos 🕊️,  
@@ -430,6 +430,8 @@ love you endlessly ♾️, and choose you over and over again 💗.
 
 You are my today, my tomorrow, and my forever 💐💖.  
 And I will spend the rest of my life showing you just how much you mean to me 💓🌹.
+
+God bless the woman who brought you into this world 😇❤, A big thanks Mummy.
 
 Forever and always yours ❤️‍🔥,  
 Shalom, Papi 💌💖💞`;
@@ -639,7 +641,7 @@ Shalom, Papi 💌💖💞`;
         const heartsInterval = setInterval(spawnFloatingHeart, 500);
 
         // 3. After typingDuration, stop hearts and launch fireworks
-        const typingSpeed = 50; // ms per character
+        const typingSpeed = 100; // ms per character
         const typingDuration = loveLetterText.length * typingSpeed + 500; // + buffer
         setTimeout(() => {
           clearInterval(heartsInterval);
