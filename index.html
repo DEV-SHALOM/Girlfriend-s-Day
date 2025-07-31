@@ -129,6 +129,7 @@
         font-size: 40px;
         animation: floatUp 6s ease-in forwards; /* smoother animation */
         z-index: 5;
+        cursor: pointer;
       }
 
       #flower {
@@ -287,6 +288,25 @@
         bottom: 20px;
         left: 70px;
         transform: rotateZ(-35deg);
+      }
+
+      .firework {
+        position: fixed;
+        font-size: 2rem;
+        pointer-events: none;
+        animation: fireworkAnim 1s ease-out forwards;
+        z-index: 50;
+      }
+
+      @keyframes fireworkAnim {
+        0% {
+          opacity: 1;
+          transform: scale(0.5) translateY(0);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(2) translateY(-150px);
+        }
       }
     </style>
   </head>
@@ -451,14 +471,12 @@ Shalom, Papi 💌💖💞`;
           document.getElementById("placeholderTopRight").style.display = "none";
           document.getElementById("placeholderBottomLeft").style.display =
             "none";
-
-          // Continue your start animations / functions
         });
 
       function startAdventure() {
         const music = document.getElementById("bgMusic");
         music.muted = false; // Unmute when the journey starts
-        music.volume = 1.0; // Set to 100% volume
+        music.volume = 0.9; // Set to 100% volume
         music.play().catch((err) => console.log("Music play error:", err));
 
         showSection(1);
@@ -614,30 +632,45 @@ Shalom, Papi 💌💖💞`;
       }
 
       function startLoveLetterEffects() {
+        // 1. Start typing
         typeLoveLetter();
-        const heartsInterval = setInterval(() => {
-          const heart = document.createElement("div");
-          heart.className = "heart";
-          heart.textContent = "💗";
-          heart.style.fontSize = "25px";
-          heart.style.left = Math.random() * 100 + "vw";
-          document.body.appendChild(heart);
-          setTimeout(() => heart.remove(), 5000);
-        }, 500);
 
-        const confettiInterval = setInterval(() => {
-          const conf = document.createElement("div");
-          conf.className = "confetti";
-          conf.textContent = Math.random() > 0.5 ? "💖" : "🌸";
-          conf.style.left = Math.random() * 100 + "vw";
-          document.body.appendChild(conf);
-          setTimeout(() => conf.remove(), 5000);
-        }, 700);
+        // 2. Start floating hearts during typing
+        const heartsInterval = setInterval(spawnFloatingHeart, 500);
 
+        // 3. After typingDuration, stop hearts and launch fireworks
+        const typingSpeed = 50; // ms per character
+        const typingDuration = loveLetterText.length * typingSpeed + 500; // + buffer
         setTimeout(() => {
           clearInterval(heartsInterval);
-          clearInterval(confettiInterval);
-        }, 15000);
+          launchFireworksBurst();
+        }, typingDuration);
+      }
+
+      function spawnFloatingHeart() {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.textContent = "💗";
+        heart.style.fontSize = "25px";
+        heart.style.left = Math.random() * 100 + "vw";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 5000);
+      }
+
+      function launchFireworksBurst() {
+        // Create fireworks across screen for 3 seconds
+        const fwInterval = setInterval(() => {
+          const fw = document.createElement("div");
+          fw.className = "firework";
+          fw.textContent = "🎆";
+          fw.style.left = Math.random() * 100 + "vw";
+          fw.style.top = Math.random() * 60 + "vh";
+          document.body.appendChild(fw);
+          setTimeout(() => fw.remove(), 1000);
+        }, 200);
+
+        // Stop after 3s
+        setTimeout(() => clearInterval(fwInterval), 3000);
       }
 
       function showFlowerAnimation(callback) {
