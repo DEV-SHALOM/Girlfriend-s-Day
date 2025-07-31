@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mama's Love Adventure ❤️</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(to bottom right, #ffb3c6, #ff8fab);
+        overflow-x: hidden;
+        cursor: url("https://cur.cursors-4u.net/love/lov-1/lov50.cur"), auto;
+        color: white;
+      }
+
+      /* Sections */
+      .section {
+        display: none;
+        min-height: 100vh;
+        text-align: center;
+        padding: 40px 20px;
+        animation: fadeIn 1s ease;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Flower Animation */
+      #flower {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 200px;
+        opacity: 0;
+        z-index: 100;
+        transition: opacity 2s ease;
+        pointer-events: none; /* <-- Prevents it from blocking clicks */
+      }
+
+      /* Intro */
+      #intro {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+      #intro h1 {
+        font-family: "Great Vibes", cursive;
+        font-size: 3rem;
+        margin-bottom: 20px;
+        animation: fadeSlide 1.5s ease forwards;
+      }
+      @keyframes fadeSlide {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      button {
+        background: white;
+        color: #ff4f8b;
+        padding: 15px 40px;
+        border: none;
+        border-radius: 50px;
+        font-size: 1.2rem;
+        margin-top: 20px;
+        cursor: pointer;
+        animation: pulse 1.5s infinite;
+      }
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.08);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      /* Floating Hearts */
+      .heart {
+        position: fixed;
+        bottom: -50px;
+        font-size: 40px;
+        animation: floatUp 6s ease-in forwards; /* smoother animation */
+        z-index: 5;
+      }
+
+      #flower {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 200px;
+        opacity: 0;
+        z-index: 100;
+        transition: opacity 2s ease;
+      }
+
+      @keyframes floatUp {
+        0% {
+          transform: translateY(0) scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-110vh) scale(1.2);
+          opacity: 0;
+        }
+      }
+
+      .video-heart {
+        position: fixed;
+        bottom: -50px;
+        font-size: 30px;
+        animation: floatUpVideo 8s linear forwards;
+        z-index: 0; /* Behind everything else */
+        pointer-events: none;
+        opacity: 0.7; /* Slightly transparent */
+      }
+
+      @keyframes floatUpVideo {
+        0% {
+          transform: translateY(0) scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-110vh) scale(1.2);
+          opacity: 0;
+        }
+      }
+
+      /* Floating Hearts (Background) */
+      .bg-heart {
+        position: absolute;
+        font-size: 30px;
+        animation: floatSlow 8s linear infinite;
+        opacity: 0.5;
+      }
+      @keyframes floatSlow {
+        0% {
+          transform: translateY(100vh);
+        }
+        100% {
+          transform: translateY(-10vh);
+        }
+      }
+
+      /* Popup Love Note */
+      .popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        color: #ff4f8b;
+        padding: 20px;
+        border-radius: 15px;
+        font-size: 1.2rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        animation: fadeIn 0.5s ease;
+        z-index: 20;
+      }
+
+      /* Confetti */
+      .confetti {
+        position: fixed;
+        font-size: 20px;
+        animation: fall 4s linear forwards;
+      }
+      @keyframes fall {
+        0% {
+          transform: translateY(-10vh) rotate(0deg);
+        }
+        100% {
+          transform: translateY(100vh) rotate(720deg);
+        }
+      }
+
+      /* Love Letter */
+      .love-letter {
+        background: rgba(255, 255, 255, 0.15);
+        padding: 30px;
+        border-radius: 16px;
+        max-width: 700px;
+        margin: auto;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        font-size: 1.1rem;
+        line-height: 1.8;
+        white-space: pre-wrap;
+      }
+
+      /* Mobile */
+      @media (max-width: 762px) {
+        #intro h1 {
+          font-size: 1.9rem;
+        }
+
+        .placeholder-img {
+          position: fixed;
+          z-index: 50;
+          width: 120px; /* Adjust size as needed */
+          border-radius: 10px;
+        }
+
+        #placeholderTopRight {
+          top: 100px;
+          right: 120px;
+          transform: rotateZ(35deg);
+        }
+
+        #placeholderBottomLeft {
+          bottom: 110px;
+          left: 120px;
+          transform: rotateZ(-35deg);
+        }
+      }
+
+      #level3 h2 {
+        margin-bottom: 30px; /* Creates space between heading and love letter */
+      }
+
+      .placeholder-img {
+        position: fixed;
+        
+        z-index: 50;
+        width: 100px; /* Adjust size as needed */
+        border-radius: 10px;
+      }
+
+      #placeholderTopRight {
+        top: 20px;
+        right: 70px;
+        transform: rotateZ(35deg);
+      }
+
+      #placeholderBottomLeft {
+        bottom: 20px;
+        left: 70px;
+        transform: rotateZ(-35deg);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Music -->
+    <audio id="bgMusic" autoplay loop muted>
+      <source
+        src="./love_song/Elvis_Presley_-_-_Cant_Help_Falling_In_Love.mp3"
+        type="audio/mp3"
+      />
+    </audio>
+
+    <!-- Intro -->
+    <!-- Top right placeholder -->
+    <img
+      id="placeholderTopRight"
+      class="placeholder-img"
+      src="./images/babe_img1.jpg"
+      alt="Top Right Image"
+    />
+
+    <!-- Bottom left placeholder -->
+    <img
+      id="placeholderBottomLeft"
+      class="placeholder-img"
+      src="./images/babe_img2.jpg"
+      alt="Bottom Left Image"
+    />
+
+    <div id="intro" class="section" style="display: flex">
+      <h1>💖 Happy Girlfriend's Day, Mama 💖</h1>
+      <p>Click below to begin your love journey with Papi ❤️</p>
+      <button id="startBtn" onclick="startAdventure()">
+        Start My Love Journey
+      </button>
+    </div>
+
+    <!-- Level 1: Floating Hearts -->
+    <div id="level1" class="section">
+      <h2>💌 Click the hearts to see my love notes 💌</h2>
+      <p>(Find all 15 hearts!)</p>
+    </div>
+
+    <!-- Level 2: Memory Lane -->
+    <div id="level2" class="section">
+      <h2>🎥 Our Memories Together 🎥</h2>
+      <video
+        id="memoryVideo"
+        src="./love-video/love-video.mp4"
+        loop
+        playsinline
+        style="
+          max-width: 90%;
+          height: 400px;
+          border-radius: 12px;
+          margin-top: 20px;
+        "
+      ></video>
+      <p>Every moment with you is my favorite memory ❤️</p>
+      <button onclick="nextLevel()">Next Stage ➡️</button>
+    </div>
+
+    <!-- Level 3: Love Letter -->
+    <div id="level3" class="section">
+      <h2>💌 My Love Letter to You 💌</h2>
+      <div class="love-letter" id="loveText"></div>
+    </div>
+
+    <!-- Flower Image -->
+    <img id="flower" src="./images/flower.png" alt="Flower" />
+
+    <script>
+      let currentLevel = 0;
+      let foundHearts = 0;
+      const sections = ["intro", "level1", "level2", "level3"];
+      const loveNotes = [
+        "You're my sunshine ☀️",
+        "My heart beats for you 💕",
+        "You complete me ❤️",
+        "Forever and always 💍",
+        "Every day I love you more 💖",
+        "You are my safe place 🏡",
+        "I found my forever in you 💫",
+        "You’re the reason I believe in love 🌹",
+        "In your eyes, I see my whole world 🌎",
+        "I fall for you more every single day 💘",
+        "You’re my sweetest dream come true ✨",
+        "When I’m with you, I’m home 🕊️",
+        "Your love is my greatest treasure 💎",
+        "You make my soul smile 🌞",
+        "I thank God for you every day 🙏",
+        "With you, forever still isn’t enough ⏳",
+        "You are my miracle in human form 🌼",
+        "Loving you is the best thing I’ve ever done ❤️‍🔥",
+        "You are my heart, my soul, my everything 💖",
+        "If I could choose again, I’d still choose you a million times ♾️",
+      ];
+      const loveLetterText = `💖 My dearest Mama ❤️💋,
+
+From the very moment you walked into my life, everything changed 🌅💫.  
+You brought light where there was darkness 🌞, peace where there was chaos 🕊️,  
+and love where there was emptiness 💞.  
+
+You have been my safe haven 🏡, my greatest blessing 🙏,  
+and my sweetest dream come true ✨.  
+You were there when I was down 😔, you lifted me when I felt weak 💪💖,  
+and you gave me a reason to smile every single day 😍.  
+
+I want to thank you for every hug 🤗, every word of encouragement 📜,  
+every laugh we’ve shared 😂, and every tear you’ve wiped away 💦.  
+You are my partner, my best friend 👩‍❤️‍👨, and the love of my life 💍.  
+
+No matter where life takes us 🌍, I promise to stand by your side 🤝,  
+love you endlessly ♾️, and choose you over and over again 💗.  
+
+You are my today, my tomorrow, and my forever 💐💖.  
+And I will spend the rest of my life showing you just how much you mean to me 💓🌹.
+
+Forever and always yours ❤️‍🔥,  
+Shalom, Papi 💌💖💞`;
+
+      function showSection(index) {
+        sections.forEach(
+          (id) => (document.getElementById(id).style.display = "none")
+        );
+        currentLevel = index;
+        document.getElementById(sections[currentLevel]).style.display = "block";
+      }
+
+      document
+        .getElementById("startBtn")
+        .addEventListener("click", function () {
+          document.getElementById("placeholderTopRight").style.display = "none";
+          document.getElementById("placeholderBottomLeft").style.display =
+            "none";
+
+          // Continue your start animations / functions
+        });
+
+      function startAdventure() {
+        const music = document.getElementById("bgMusic");
+        music.muted = false; // Unmute when the journey starts
+        music.volume = 1.0; // Set to 100% volume
+        music.play().catch((err) => console.log("Music play error:", err));
+
+        showSection(1);
+        spawnHearts();
+      }
+
+      function spawnHearts() {
+        foundHearts = 0;
+        function createHeart() {
+          const heart = document.createElement("div");
+          heart.className = "heart";
+          heart.textContent = "💖";
+          heart.style.left = Math.random() * 80 + 10 + "vw";
+          heart.onclick = () => {
+            foundHearts++;
+
+            if (foundHearts < 15) {
+              // First 14 clicks → show random love note
+              showPopup(
+                loveNotes[Math.floor(Math.random() * loveNotes.length)]
+              );
+            } else if (foundHearts === 15) {
+              // Last heart → show final message only
+              showPopup("You found all my hearts, Mama 💕");
+              clearInterval(heartInterval);
+
+              // Show flower after a short pause
+              setTimeout(() => {
+                const flower = document.getElementById("flower");
+                flower.style.opacity = "1";
+
+                setTimeout(() => {
+                  flower.style.opacity = "0";
+                  // Move to next stage after hiding flower
+                  setTimeout(() => {
+                    nextLevel();
+                    const video = document.getElementById("memoryVideo");
+                    if (video) {
+                      video.volume = 0.8;
+                      video.muted = false;
+                      video
+                        .play()
+                        .catch((err) => console.log("Video play error:", err));
+                    }
+                  }, 1000);
+                }, 3000);
+              }, 1000);
+            }
+
+            heart.remove();
+          };
+          document.body.appendChild(heart);
+          setTimeout(() => heart.remove(), 7000);
+        }
+        createHeart();
+        const heartInterval = setInterval(createHeart, 700);
+      }
+
+      function finalHeartSequence() {
+        showPopup("You found all my hearts, Mama 💕");
+        const flower = document.getElementById("flower");
+        flower.style.opacity = "1";
+        flower.style.pointerEvents = "auto"; // enable interaction if needed
+
+        setTimeout(() => {
+          flower.style.opacity = "0";
+          flower.style.pointerEvents = "none"; // disable again after hiding
+
+          // Wait 2 seconds before moving to Level 2 and playing the video
+          setTimeout(() => {
+            nextLevel();
+            const video = document.getElementById("memoryVideo");
+            if (video) {
+              video.volume = 0.95; // Set default volume to 95%
+              video.muted = false;
+              video
+                .play()
+                .catch((err) => console.log("Video play error:", err));
+            }
+          }, 1000);
+        }, 3000);
+      }
+
+      function showPopup(message) {
+        const popup = document.createElement("div");
+        popup.className = "popup";
+        popup.textContent = message;
+        document.body.appendChild(popup);
+        setTimeout(() => popup.remove(), 1500);
+      }
+
+      function nextLevel() {
+        // If we're leaving Level 2 (video stage), stop the video
+        if (currentLevel === 2) {
+          const video = document.getElementById("memoryVideo");
+          if (video) {
+            video.pause();
+            video.currentTime = 0; // Reset back to start
+          }
+        }
+
+        // Move to the next section
+        showSection(currentLevel + 1);
+
+        if (currentLevel === 2) {
+          // Start hearts animation during video playback
+          startVideoHearts();
+        }
+
+        if (currentLevel === 3) {
+          startLoveLetterEffects();
+        }
+      }
+
+      function startVideoHearts() {
+        const video = document.getElementById("memoryVideo");
+        if (!video) return;
+
+        const videoParent = video.parentElement;
+
+        const heartInterval = setInterval(() => {
+          if (video.paused || video.ended) {
+            clearInterval(heartInterval);
+            return;
+          }
+          const heart = document.createElement("div");
+          heart.className = "video-heart";
+          heart.textContent = Math.random() > 0.5 ? "💖" : "💗";
+          heart.style.left = Math.random() * 90 + "vw";
+
+          // Insert BEFORE the video so it sits behind visually
+          videoParent.insertBefore(heart, video);
+
+          setTimeout(() => heart.remove(), 8000);
+        }, 600);
+      }
+
+      function typeLoveLetter() {
+        const textContainer = document.getElementById("loveText");
+        textContainer.innerHTML = "";
+        let i = 0;
+        function typing() {
+          if (i < loveLetterText.length) {
+            textContainer.innerHTML += loveLetterText.charAt(i);
+            i++;
+            setTimeout(typing, 50);
+          }
+        }
+        typing();
+      }
+
+      function startLoveLetterEffects() {
+        typeLoveLetter();
+        const heartsInterval = setInterval(() => {
+          const heart = document.createElement("div");
+          heart.className = "heart";
+          heart.textContent = "💗";
+          heart.style.fontSize = "25px";
+          heart.style.left = Math.random() * 100 + "vw";
+          document.body.appendChild(heart);
+          setTimeout(() => heart.remove(), 5000);
+        }, 500);
+
+        const confettiInterval = setInterval(() => {
+          const conf = document.createElement("div");
+          conf.className = "confetti";
+          conf.textContent = Math.random() > 0.5 ? "💖" : "🌸";
+          conf.style.left = Math.random() * 100 + "vw";
+          document.body.appendChild(conf);
+          setTimeout(() => conf.remove(), 5000);
+        }, 700);
+
+        setTimeout(() => {
+          clearInterval(heartsInterval);
+          clearInterval(confettiInterval);
+        }, 15000);
+      }
+
+      function showFlowerAnimation(callback) {
+        const flower = document.getElementById("flower");
+        flower.style.opacity = "1"; // fade in
+        setTimeout(() => {
+          flower.style.opacity = "0"; // fade out
+          if (callback) setTimeout(callback, 1500);
+        }, 3000);
+      }
+    </script>
+  </body>
+</html>
