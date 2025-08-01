@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Happy Girlfriend's Day Mama</title>
+    <link rel="Website Icon" href="./images/flower.png">
+<meta name="description" content="Happy Girlfriend's Day Mama. You're the best❤'">
 
     <link
       href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap"
@@ -11,6 +13,9 @@
     />
 
     <style>
+
+        
+        
       * {
         margin: 0;
         padding: 0;
@@ -20,8 +25,9 @@
         font-family: "Poppins", sans-serif;
         background: linear-gradient(to bottom right, #ffb3c6, #ff8fab);
         overflow-x: hidden;
-        cursor: url("https://cur.cursors-4u.net/love/lov-1/lov50.cur"), auto;
+        cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym840.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym840.png), auto !important;
         color: white;
+        
       }
 
       /* Sections */
@@ -72,6 +78,7 @@
         z-index: 100;
         transition: opacity 2s ease;
         pointer-events: none; /* <-- Prevents it from blocking clicks */
+        cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym840.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym840.png), auto !important;
       }
 
       /* Intro */
@@ -107,7 +114,7 @@
         border-radius: 50px;
         font-size: 1.2rem;
         margin-top: 20px;
-        cursor: pointer;
+        cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym840.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym840.png), auto !important;
         animation: pulse 1.5s infinite;
       }
       @keyframes pulse {
@@ -129,7 +136,7 @@
         font-size: 40px;
         animation: floatUp 6s ease-in forwards; /* smoother animation */
         z-index: 5;
-        cursor: pointer;
+        cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym840.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym840.png), auto !important;
       }
 
       #flower {
@@ -141,6 +148,7 @@
         opacity: 0;
         z-index: 100;
         transition: opacity 2s ease;
+        cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym840.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym840.png), auto !important;
       }
 
       @keyframes floatUp {
@@ -162,6 +170,7 @@
         z-index: 0; /* Behind everything else */
         pointer-events: none;
         opacity: 0.7; /* Slightly transparent */
+        cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym840.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym840.png), auto !important;
       }
 
       @keyframes floatUpVideo {
@@ -181,6 +190,7 @@
         font-size: 30px;
         animation: floatSlow 8s linear infinite;
         opacity: 0.5;
+        cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym840.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym840.png), auto !important;
       }
       @keyframes floatSlow {
         0% {
@@ -205,6 +215,7 @@
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         animation: fadeIn 0.5s ease;
         z-index: 20;
+        cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym840.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym840.png), auto !important;
       }
 
       /* Confetti */
@@ -212,6 +223,7 @@
         position: fixed;
         font-size: 20px;
         animation: fall 4s linear forwards;
+        cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym840.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym840.png), auto !important;
       }
       @keyframes fall {
         0% {
@@ -233,6 +245,7 @@
         font-size: 1rem;
         line-height: 1.8;
         white-space: pre-wrap;
+        cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym840.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym840.png), auto !important;
       }
 
       /* Mobile */
@@ -268,6 +281,7 @@
 
       #level3 h2 {
         margin-bottom: 30px; /* Creates space between heading and love letter */
+        cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym840.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym840.png), auto !important;
       }
 
       .placeholder-img {
@@ -276,6 +290,7 @@
         z-index: 50;
         width: 100px; /* Adjust size as needed */
         border-radius: 10px;
+        cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym840.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym840.png), auto !important;
       }
 
       #placeholderTopRight {
@@ -296,6 +311,7 @@
         pointer-events: none;
         animation: fireworkAnim 1s ease-out forwards;
         z-index: 50;
+        cursor: url(https://ani.cursors-4u.net/symbols/sym-9/sym840.ani), url(https://ani.cursors-4u.net/symbols/sym-9/sym840.png), auto !important;
       }
 
       @keyframes fireworkAnim {
@@ -344,7 +360,7 @@
     <div id="intro" class="section" style="display: flex">
       <h1>💖 Happy Girlfriend's Day, Mama 💖</h1>
       <p>Click below to begin your love journey with Papi ❤️</p>
-      <button id="startBtn" onclick="startAdventure()">
+      <button style="cursor: auto;" id="startBtn" onclick="startAdventure()">
         Start My Love Journey
       </button>
     </div>
@@ -382,6 +398,29 @@
 
     <!-- Flower Image -->
     <img id="flower" src="./images/flower.png" alt="Flower" />
+
+    <button
+      id="restartBtn"
+      style="
+        display: none;
+        position: fixed;
+        top: 65vh;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 100;
+        background: #fff;
+        color: #ff4f8b;
+        font-size: 1.3rem;
+        padding: 18px 50px;
+        border-radius: 60px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+        font-weight: 700;
+        animation: pulse 1.2s infinite;
+        letter-spacing: 1px;
+      "
+    >
+      Restart Adventure
+    </button>
 
     <script>
       let currentLevel = 0;
@@ -641,7 +680,7 @@ Shalom, Papi 💌💖💞`;
         const heartsInterval = setInterval(spawnFloatingHeart, 500);
 
         // 3. After typingDuration, stop hearts and launch fireworks
-        const typingSpeed = 100; // ms per character
+        const typingSpeed = 70; // ms per character
         const typingDuration = loveLetterText.length * typingSpeed + 500; // + buffer
         setTimeout(() => {
           clearInterval(heartsInterval);
@@ -659,6 +698,7 @@ Shalom, Papi 💌💖💞`;
         setTimeout(() => heart.remove(), 5000);
       }
 
+      // 1. After launchFireworksBurst(), show the restart button
       function launchFireworksBurst() {
         // Create fireworks across screen for 3 seconds
         const fwInterval = setInterval(() => {
@@ -671,9 +711,62 @@ Shalom, Papi 💌💖💞`;
           setTimeout(() => fw.remove(), 1000);
         }, 200);
 
-        // Stop after 3s
-        setTimeout(() => clearInterval(fwInterval), 3000);
+        // Stop after 3s, then show restart button
+        setTimeout(() => {
+          clearInterval(fwInterval);
+
+          // SHOW the restart button now
+          document.getElementById("restartBtn").style.display = "block";
+        }, 3000);
       }
+
+      // 2. Restart button handler
+      document.getElementById("restartBtn").onclick = function () {
+        // Hide the button
+        this.style.display = "none";
+
+        // Reset state
+        foundHearts = 0;
+        currentLevel = 0;
+
+        // Reset heart counter
+        document.getElementById("heartsLeft").textContent = totalHearts;
+
+        // Show the intro section and hide all others
+        showSection(0);
+
+        // Show back the intro images
+        document.getElementById("placeholderTopRight").style.display = "block";
+        document.getElementById("placeholderBottomLeft").style.display =
+          "block";
+
+        // Reset love letter container
+        document.getElementById("loveText").innerHTML = "";
+
+        // Pause and reset video
+        const video = document.getElementById("memoryVideo");
+        if (video) {
+          video.pause();
+          video.currentTime = 0;
+        }
+
+        // Reset flower opacity
+        document.getElementById("flower").style.opacity = "0";
+        
+
+        // Reset music (mute and replay)
+        const music = document.getElementById("bgMusic");
+        if (music) {
+          music.currentTime = 0;
+          music.muted = true; // Muted until the user starts again
+          music.pause();
+        }
+
+        // Remove any leftover floating hearts or fireworks
+        document
+          .querySelectorAll(".heart, .firework, .video-heart")
+          .forEach((e) => e.remove());
+      };
 
       function showFlowerAnimation(callback) {
         const flower = document.getElementById("flower");
